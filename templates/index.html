@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Aplicação Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img style="width:25%" src="{{ url_for('static', filename='linuxtips-logo.png') }}" alt="BadTux">
+        <h1>Gerador de nomes para variável</h1>
+        <button onclick="obterFrase()">#VAAAAIIII</button>
+        <div class="frase-container">
+          <p id="frase"></p>
+      </div>
+    </div>
+    <script>
+        function obterFrase() {
+            fetch('/frase')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('frase').textContent = data;
+                });
+        }
+    </script>
+<footer style="background-color: #333; color: white; text-align: center; padding: 10px;">
+  Criado por <a href="https://github.com/dvargas1" style="color: #4caf50; text-decoration: none;">Daniel Vargas</a>
+</footer>
+</body>
+</html>

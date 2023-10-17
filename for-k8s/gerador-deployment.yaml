@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gerador-variaveis
+  name: gerador-variaveis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gerador-variaveis
+  template:
+    metadata:
+      labels:
+        app: gerador-variaveis
+    spec:
+      containers:
+      - image: dvargas1/teste-flask:1.0
+        name: gerador-variaveis
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always
